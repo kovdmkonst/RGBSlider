@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="-1536" y="98"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="fzN-5m-Dgk">
             <objects>
-                <viewController id="kAR-5z-xHQ" sceneMemberID="viewController">
+                <viewController id="kAR-5z-xHQ" customClass="MainViewController" customModule="RGBSlider" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eyu-BN-Uhk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +37,7 @@
                     <navigationItem key="navigationItem" id="UhV-a4-em4">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="iXM-Z0-7OL">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="env-c2-TTS"/>
+                                <segue destination="hQz-wc-wBV" kind="presentation" modalPresentationStyle="fullScreen" id="onT-Ar-Ooz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -46,16 +46,32 @@
             </objects>
             <point key="canvasLocation" x="-741" y="98"/>
         </scene>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="1Uh-zK-or7">
+            <objects>
+                <navigationController id="hQz-wc-wBV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IWA-I8-wLN">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="y6A-MX-Ux3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kfp-Az-WCv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-19" y="98"/>
+        </scene>
+        <!--Settings View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RGBSlider" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SettingsViewController" customModule="RGBSlider" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="2dV-kx-dh0">
-                                <rect key="frame" x="16" y="64" width="382" height="637"/>
+                                <rect key="frame" x="16" y="108" width="382" height="637"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBE-42-jjS">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="321"/>
@@ -169,6 +185,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Done" titleAlignment="center"/>
+                                                <connections>
+                                                    <action selector="doneButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="FPC-Nf-9py"/>
+                                                </connections>
                                             </button>
                                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tje-ae-HdS">
                                                 <rect key="frame" x="271.5" y="0.0" width="110.5" height="50"/>
@@ -194,6 +213,7 @@
                             <constraint firstItem="2dV-kx-dh0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="jzg-xc-OHK"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dHq-z3-xsF"/>
                     <connections>
                         <outlet property="blueSlider" destination="DRN-3f-iOv" id="bDf-5r-aNf"/>
                         <outlet property="blueTextField" destination="k9K-oJ-mWl" id="3Yi-2L-PMk"/>
@@ -206,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="97.767857142857139"/>
+            <point key="canvasLocation" x="751" y="98"/>
         </scene>
     </scenes>
     <resources>
