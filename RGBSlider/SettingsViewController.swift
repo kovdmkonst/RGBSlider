@@ -7,10 +7,9 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, SettingsViewControllerDelegate {
-        
-    @IBOutlet weak var colorView: UIView!
+class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var colorView: UIView!
     
     @IBOutlet weak var redTextField: UITextField!
     @IBOutlet weak var greenTextField: UITextField!
@@ -20,68 +19,38 @@ class SettingsViewController: UIViewController, SettingsViewControllerDelegate {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
-    var delegate: SettingsViewControllerDelegate!
     
-    var redColorValue: CGFloat = 0
-    var greenColorValue: CGFloat = 0
-    var blueColorValue: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         colorView.layer.cornerRadius = 10
         
-        changeRedValue()
-        changeBlueValue()
-        changeGreenValue()
+        redTextField.text = String(format: "%.2f", redSlider.value)
+        greenTextField.text = String(format: "%.2f", greenSlider.value)
+        blueTextField.text = String(format: "%.2f", blueSlider.value)
     }
     
-    
-    @IBAction func changeRedValue() {
-        let redValue = redSlider.value * 255
-        redTextField.text = String(Int(redValue))
-        changeViewColor()
-    }
-    
-    @IBAction func changeGreenValue() {
-        let greenValue = greenSlider.value * 255
-        greenTextField.text = String(Int(greenValue))
-        changeViewColor()
-    }
-    
-    @IBAction func changeBlueValue() {
-        let blueValue = blueSlider.value * 255
-        blueTextField.text = String(Int(blueValue))
-        changeViewColor()
-    }
-    
-    @IBAction func doneButtonPressed () {
-        view.endEditing(true)
-        delegate.setNewColorValue(redValue: redColorValue, greenValue: greenColorValue, blueValue: blueColorValue)
-        dismiss(animated: true)
-    }
+    @IBAction func changeTextFieldsText(_ sender: UISlider) {
         
-//    dele setNewColorValue(redValue: CGFloat,
-//                          greenValue: CGFloat,
-//                          blueValue: CGFloat) {
-//        redValue = redColorValue
-//        greenValue = greenColorValue
-//        blueValue = blueColorValue
-//    }
-    
-    func changeViewColor() {
-        redColorValue = CGFloat(redSlider.value)
-        greenColorValue = CGFloat(greenSlider.value)
-        blueColorValue = CGFloat(blueSlider.value)
+        changeViewColor()
         
-        colorView.layer.backgroundColor = CGColor(
-            red: redColorValue,
-            green: greenColorValue,
-            blue: blueColorValue,
+        switch sender {
+        case redSlider:  redTextField.text = String(format: "%.2f", redSlider.value)
+        case greenSlider: greenTextField.text = String(format: "%.2f", greenSlider.value)
+        default: blueTextField.text = String(format: "%.2f", blueSlider.value)
+
+        }
+    }
+    
+    private func changeViewColor() {
+        colorView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
             alpha: 1.0)
-        
-        delegate.setNewColorValue(redValue: redColorValue, greenValue: greenColorValue, blueValue: blueColorValue)
     }
+    
     
 }
 
