@@ -25,11 +25,16 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         colorView.layer.cornerRadius = 10
+
+        createRandomSliderValue(sliders: redSlider, greenSlider, blueSlider)
         
         redTextField.text = String(format: "%.2f", redSlider.value)
         greenTextField.text = String(format: "%.2f", greenSlider.value)
         blueTextField.text = String(format: "%.2f", blueSlider.value)
+        
+        changeViewColor()
     }
+    
     
     @IBAction func changeTextFieldsText(_ sender: UISlider) {
         
@@ -51,6 +56,11 @@ class SettingsViewController: UIViewController {
             alpha: 1.0)
     }
     
-    
+    private func createRandomSliderValue(sliders: UISlider...) {
+        for slider in sliders {
+            slider.value = Float.random(in: 0.0...1.0)
+        }
+        
+    }
 }
 
